@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "a-eye-fastapi"
+version = "1.0.0"
+description = "A FastAPI service for wellness image analysis, as detailed in the SRS."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+uvicorn = "^0.29.0"
+sqlalchemy = "^2.0.30"
+psycopg2-binary = "^2.9.9"
+alembic = "^1.13.1"
+pydantic-settings = "^2.2.1"
+boto3 = "^1.34.119"
+celery = "^5.4.0"
+redis = "^5.3.0"
+opencv-python-headless = "^4.8.0.76"
+mediapipe = "^0.10.0"
+tflite-runtime = "^2.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,41 @@
+# A-EYE Pipeline Improvements - Task Tracking
+
+- `[x]` **Phase 1: Rule Engine & Database Alignment**
+  - `[x]` Support logical operators (`AND`, `OR`, `NOT`) in `safe_eval_condition` ([rule_engine.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/rule_engine.py))
+  - `[x]` Map feature extraction attributes (redness, texture metrics, spots, cracks) to rule evaluation context
+- `[x]` **Phase 2: Mathematical Iris Zoning (36 Zones)**
+  - `[x]` Implement boundary estimation and partitioning logic (3 rings, 12 segments) in [zoning.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/analysis_pipeline/zoning.py)
+  - `[x]` Update background task to record mathematical zone coordinates in database
+- `[x]` **Phase 3: MediaPipe Face Mesh Zones (Frontend Integration)**
+  - `[x]` Update schema and `/analyze/face` endpoint to accept optional landmarks from the frontend
+  - `[x]` Group landmark indexes (forehead, chin, cheeks, nose, mouth) and form convex hulls in [zoning.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/analysis_pipeline/zoning.py)
+- `[x]` **Phase 4: Tongue Segmentation (Open-Source Model)**
+  - `[x]` Download/Integrate open-source DeepLabv3 TFLite model in `ml_models/`
+  - `[x]` Implement image preprocessing and model inference inside `detect_tongue` ([detection.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/analysis_pipeline/detection.py))
+  - `[x]` Implement orientation-based tongue partitioning (tip, rear, center, sides) in [zoning.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/analysis_pipeline/zoning.py)
+- `[x]` **Phase 5: Advanced Feature Extraction**
+  - `[x]` Extract HSV & LAB color features inside [feature_extraction.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/analysis_pipeline/feature_extraction.py)
+  - `[x]` Implement GLCM/LBP texture metrics (`roughness`, `uniformity`)
+  - `[x]` Implement Spot Detection (DoG/LoG algorithms)
+  - `[x]` Implement Crack/Fissure Detection (Hessian/Frangi filters)
+- `[x]` **Phase 6: Compliance & Safety Filter**
+  - `[x]` Update safety filter `BLOCKED_WORDS` to include medical terminology (`diagnose`, `treatment`, `cure`, etc.) in [protocol_engine.py](file:///home/sabuj/Office/a-eye-fastapi/app/services/protocol_engine.py)
+- `[x]` **Phase 7: Testing & Verification**
+  - `[x]` Write unit tests for rule parsing, zoning calculation, and safety filters
+  - `[x]` Verify end-to-end functionality via test analysis scripts
+
+- `[x]` **Phase 8: Frontend Bootstrapping**
+  - `[x]` Initialize Vite React app in `/frontend`
+  - `[x]` Setup TailwindCSS
+  - `[x]` Configure Vite API proxy
+- `[x]` **Phase 9: API Integration Hooks**
+  - `[x]` Write hooks to fetch Zone Maps, Regions, and Rules
+- `[x]` **Phase 10: Visual Selection Components**
+  - `[x]` Implement interactive SVGs for `EyeVisualizer`, `TongueVisualizer`, `FaceVisualizer`
+- `[x]` **Phase 11: Rule Builder Form**
+  - `[x]` Build logical condition builder component
+  - `[x]` Tie visual zone selection to form state
+  - `[x]` Implement `Save Rule` mechanism
+- `[x]` **Phase 12: Polish & Verification**
+  - `[x]` Ensure UI has sleek dark mode & glassmorphic design
+  - `[x]` Test End-to-End rule creation flow
